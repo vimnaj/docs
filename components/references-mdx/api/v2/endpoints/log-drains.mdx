@@ -29,11 +29,12 @@ Creates a new log drain subscription.
 
 #### Request Parameters
 
-| Key      | <HelpLink href="#api-basics/types" hasIcon>Type</HelpLink> | Required | Description                                                                                                                                                           |
-| -------- | ---------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **name** | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The name of the drain.                                                                                                                                                |
-| **type** | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The type of log format, one of `json`, `ndjson` or `syslog`.                                                                                                          |
-| **url**  | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The url where you will receive logs. The protocol must be `https://` or `http://` for the type `json` and `ndjson`, `syslog+tls:` or `syslog:` for the type `syslog`. |
+| Key           | <HelpLink href="#api-basics/types" hasIcon>Type</HelpLink> | Required | Description                                                                                                                                                           |
+| ------------- | ---------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **name**      | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The name of the drain.                                                                                                                                                |
+| **type**      | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The type of log format, one of `json`, `ndjson` or `syslog`.                                                                                                          |
+| **url**       | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The url where you will receive logs. The protocol must be `https://` or `http://` for the type `json` and `ndjson`, `syslog+tls:` or `syslog:` for the type `syslog`. |
+| **projectId** | <HelpLink href="#api-basics/types">ID</HelpLink>           | No       | The id of a project to subscribe.                                                                                                                                     |
 
 See the [Format and Transport](#endpoints/log-drains/format-and-transport) section for the details of the types.
 
@@ -46,6 +47,7 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
 | **type**            | <HelpLink href="#api-basics/types">String</HelpLink>       | The type of log format.                                                   |
 | **url**             | <HelpLink href="#api-basics/types">String</HelpLink>       | The URL to call when logs for the log drain is triggered.                 |
 | **ownerId**         | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the team or user whose logs will trigger the log drain. |
+| **projectId**       | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the project to be subscribed.                           |
 | **clientId**        | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the OAuth2 client which created the log drain.          |
 | **configurationId** | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the configuration which created the log drain.          |
 | **createdAt**       | <HelpLink href="#api-basics/types">Date</HelpLink>         | A timestamp that tells you when the log drain was created.                |
@@ -62,7 +64,8 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
   body={{
     name: 'My first log drain',
     type: 'json',
-    url: 'https://user:pass@my-log-drain-handler.com/zeit'
+    url: 'https://user:pass@my-log-drain-handler.com/zeit',
+    projectId: 'abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs'
   }}
 />
 
@@ -74,6 +77,7 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
   "name": "My first log drain",
   "type": "json",
   "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
+  "projectId": "abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs"
   "clientId": "oac_xbk2e7gE1XYr37jTgAV4ewX6",
   "configurationId": "icfg_8ygXBI4T7VCjxZLYopICFWzX",
   "createdAt": 1558531915505
@@ -105,6 +109,7 @@ The logs are buffered and submitted as batches with the following formats:
     "message": <text>,
     "timestamp": <timestamp>,
     "type": <"stdout" or "stderr">,
+    "projectId": <identifier of project>,
     "deploymentId": <identifier of deployement>,
     "buildId": <identifier of build>,
     "host": <hostname>,
@@ -117,6 +122,7 @@ The logs are buffered and submitted as batches with the following formats:
     "timestamp": <timestamp>,
     "requestId": <identifier of request only on runtime logs>,
     "statusCode": <HTTP status code of request only on runtime logs>,
+    "projectId": <identifier of project>,
     "deploymentId": <identifier of deployement>,
     "buildId": <identifier of build only on build logs>,
     "host": <hostname>,
@@ -147,9 +153,9 @@ Also it receives the same HTTP headers including `x-zeit-signature`.
 
 The following is an example `POST` body:
 
-<Code lang="json">{`{"id":"1573817187330377061717300000","message":"done","timestamp":1573817187330,"type":"stdout","deploymentId":"dpl_233NRGRjVZX1caZrXWtz5g1TAksD","buildId":"bld_cotnkcr76","host":"example-4lp0kffgq.now.sh","entrypoint":"api/index.js"}
+<Code lang="json">{`{"id":"1573817187330377061717300000","message":"done","timestamp":1573817187330,"type":"stdout","projectId":"abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs","deploymentId":"dpl_233NRGRjVZX1caZrXWtz5g1TAksD","buildId":"bld_cotnkcr76","host":"example-4lp0kffgq.now.sh","entrypoint":"api/index.js"}
 {"id":"1573817250283254651097202070","message":"START RequestId: 643af4e3-975a-4cc7-9e7a-1eda11539d90 Version: $LATEST\\n2019-11-15T11:27:30.721Z\\t643af4e3-975a-4cc7-9e7a-1eda11539d90\\tINFO\\thello\\nEND RequestId: 643af4e3-975a-4cc7-9e7a-1eda11539d90\\nREPORT RequestId: 643af4e3-975a-4cc7-9e7a-1eda11539d90\\t
-Duration: 16.76 ms\\tBilled Duration: 100 ms\\tMemory Size: 1024 MB\\tMax Memory Used: 78 MB\\tInit Duration: 186.49 ms\\t\\n","timestamp":1573817250283,"requestId":"894xj-1573817250172-7847d20a4939","statusCode":200,"proxy":{"timestamp":1573817250172,"path":"/api","userAgent":["Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"],"method":"GET","scheme":"https","host":"example-4lp0kffgq.now.sh","statusCode":200},"deploymentId":"dpl_233NRGRjVZX1caZrXWtz5g1TAksD","host":"example-4lp0kffgq.now.sh","path":"api/index.js"}`}</Code>
+Duration: 16.76 ms\\tBilled Duration: 100 ms\\tMemory Size: 1024 MB\\tMax Memory Used: 78 MB\\tInit Duration: 186.49 ms\\t\\n","timestamp":1573817250283,"requestId":"894xj-1573817250172-7847d20a4939","statusCode":200,"proxy":{"timestamp":1573817250172,"path":"/api","userAgent":["Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"],"method":"GET","scheme":"https","host":"example-4lp0kffgq.now.sh","statusCode":200},"projectId":"abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs","deploymentId":"dpl_233NRGRjVZX1caZrXWtz5g1TAksD","host":"example-4lp0kffgq.now.sh","path":"api/index.js"}`}</Code>
 
 ### Syslog Drain
 
