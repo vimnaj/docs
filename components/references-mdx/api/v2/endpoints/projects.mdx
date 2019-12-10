@@ -286,8 +286,8 @@ Update some fields of a project either with its name or id.
   }}
   auth
   body={{
-    buildCommand: 'build.sh',
-    devCommand: 'dev.sh',
+    buildCommand: 'yarn run different-build',
+    devCommand: 'yarn run different-dev',
     outputDirectory: null
   }}
 />
@@ -295,9 +295,9 @@ Update some fields of a project either with its name or id.
 ##### Example Response
 
 <Code lang="json">{`{
-  "id":"QmQKrt94KYKF3sDysJq19N87uMmE8Wicbt2GirePy1dH8U",
-  "name":"a-project-name",
-  "accountId":"K4amb7K9dAt5R2vBJWF32bmY",
+  "id": "QmQKrt94KYKF3sDysJq19N87uMmE8Wicbt2GirePy1dH8U",
+  "name": "a-project-name",
+  "accountId": "K4amb7K9dAt5R2vBJWF32bmY",
   "framework": {
     "slug": "next",
     "version": "9.0.0"
@@ -305,20 +305,20 @@ Update some fields of a project either with its name or id.
   "buildCommand": {
     "auto": false,
     "valueDetected": "yarn build",
-    "valueCurrent": "build.sh"
+    "valueCurrent": "yarn run different-build"
   },
   "devCommand": {
     "auto": false,
     "valueDetected": "next -p $PORT",
-    "valueCurrent": "dev.sh"
+    "valueCurrent": "yarn run different-dev"
   },
   "outputDirectory": {
     "auto": true,
     "valueDetected": "build",
     "valueCurrent": "build"
   },
-  "updatedAt":1555413045188,
-  "createdAt":1555413045188
+  "updatedAt": 1555413045188,
+  "createdAt": 1555413045188
 }`}</Code>
 
 ### Remove a Single Project
