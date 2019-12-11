@@ -6,7 +6,7 @@ export const meta = {
   description:
     'A list of limits and limitations that apply on the ZEIT Now platform.',
   editUrl: 'pages/docs/v2/platform/limits.mdx',
-  lastEdited: '2019-11-21T12:40:44.000Z'
+  lastEdited: '2019-12-11T10:40:03.000Z'
 }
 
 This page outlines all relevant limits and limitations present when using the ZEIT Now platform.
@@ -39,9 +39,11 @@ This section highlights two areas relating to pricing plans, **Usage Allowances*
 
 ## Logs
 
-Both log types – **build time** and **runtime** – are stored for **20 days only**. It is not possible to retrieve either of these log types beyond the age of 20 days.
+Both log types - **Build Time** and **Runtime** - have differing behavior when it comes to storing logs.
 
-For [Serverless Functions](/docs/v2/serverless-functions/introduction/), each log output is **limited to 4kb**. For log outputs greater than 4kb, only the last 4kb will be retained.
+During the [Build Step](/docs/v2/build-step), all logs are stored and persisted.
+
+For [Serverless Functions](/docs/v2/serverless-functions/introduction/), only logs from failed requests are persisted. All other logs are stored in memory only and are not persisted between page views. Each log output is **limited to 4kb**. For log outputs greater than 4kb, only the last 4kb will be retained.
 
 ## Environment Variables
 
