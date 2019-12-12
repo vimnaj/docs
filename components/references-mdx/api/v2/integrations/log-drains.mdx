@@ -11,21 +11,21 @@ export const meta = {
 
 ## Log Drains
 
-Log Drains allow you to collect logs from your deployments. To enable Log Drains, you must setup a URL using your [OAuth2](/docs/api#endpoints/oauth2) app credentials so that it is associated with your app.
+Log Drains allow you to collect logs from your deployments. To enable Log Drains, you must provide a destination URL to send the logs to.
 
-We send logs to that URL over `HTTPS` / `HTTP`/ `TLS`/ `TCP` every time logs are generated.
+We send logs to destination URLs over `HTTPS`, `HTTP`, `TLS`, or `TCP` every time logs are generated.
 
 ### List all Log Drains
 
 <Endpoint method="GET" url="/v1/integrations/log-drains" />
 
-Retrieves a list of all log-drains that are defined for the authorized account.
+Retrieves a list of all Log Drains that are defined for the authorized account.
 
 ### Create a Log Drain
 
 <Endpoint method="POST" url="/v1/integrations/log-drains" />
 
-Creates a new log drain subscription.
+Creates a new Log Drain subscription.
 
 #### Request Parameters
 
@@ -33,24 +33,24 @@ Creates a new log drain subscription.
 | ------------- | ---------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **name**      | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The name of the drain.                                                                                                                                                |
 | **type**      | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The type of log format, one of `json`, `ndjson` or `syslog`.                                                                                                          |
-| **url**       | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The url where you will receive logs. The protocol must be `https://` or `http://` for the type `json` and `ndjson`, `syslog+tls:` or `syslog:` for the type `syslog`. |
+| **url**       | <HelpLink href="#api-basics/types">String</HelpLink>       | Yes      | The URL where you will receive logs. The protocol must be `https://` or `http://` for the type `json` and `ndjson`, `syslog+tls:` or `syslog:` for the type `syslog`. |
 | **projectId** | <HelpLink href="#api-basics/types">ID</HelpLink>           | No       | The id of a project to subscribe.                                                                                                                                     |
 
-See the [Format and Transport](#endpoints/log-drains/format-and-transport) section for the details of the types.
+See the [Format and Transport](#endpoints/log-drains/format-and-transport) section for more details on the types.
 
 #### Response Parameters
 
 | Key                 | <HelpLink href="#api-basics/types" hasIcon>Type</HelpLink> | Description                                                               |
 | ------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------- |
 | **id**              | <HelpLink href="#api-basics/types">ID</HelpLink>           | The unique identifier of the drain. Always prefixed with `ld_`.           |
-| **name**            | <HelpLink href="#api-basics/types">String</HelpLink>       | The name of the log drain.                                                |
+| **name**            | <HelpLink href="#api-basics/types">String</HelpLink>       | The name of the Log Drain.                                                |
 | **type**            | <HelpLink href="#api-basics/types">String</HelpLink>       | The type of log format.                                                   |
-| **url**             | <HelpLink href="#api-basics/types">String</HelpLink>       | The URL to call when logs for the log drain is triggered.                 |
-| **ownerId**         | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the team or user whose logs will trigger the log drain. |
+| **url**             | <HelpLink href="#api-basics/types">String</HelpLink>       | The URL to call when logs for the Log Drain is triggered.                 |
+| **ownerId**         | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the team or user whose logs will trigger the Log Drain. |
 | **projectId**       | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the project to be subscribed.                           |
-| **clientId**        | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the OAuth2 client which created the log drain.          |
-| **configurationId** | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the configuration which created the log drain.          |
-| **createdAt**       | <HelpLink href="#api-basics/types">Date</HelpLink>         | A timestamp that tells you when the log drain was created.                |
+| **clientId**        | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the client which created the Log Drain.                 |
+| **configurationId** | <HelpLink href="#api-basics/types">ID</HelpLink>           | The identifier of the configuration which created the Log Drain.          |
+| **createdAt**       | <HelpLink href="#api-basics/types">Date</HelpLink>         | A timestamp that tells you when the Log Drain was created.                |
 
 ##### Example Request
 
@@ -62,7 +62,7 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
   }}
   auth
   body={{
-    name: 'My first log drain',
+    name: 'My first Log Drain',
     type: 'json',
     url: 'https://user:pass@my-log-drain-handler.com/zeit',
     projectId: 'abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs'
@@ -74,7 +74,7 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
 <Code lang="json">{`{
   "id": "ld_XCG7t7AIHuO2SBA8667zNUiM",
   "url": "https://user:pass@my-log-drain-handler.com/zeit",
-  "name": "My first log drain",
+  "name": "My first Log Drain",
   "type": "json",
   "ownerId": "kr1PsOIzqEL5Xg6M4VZcZosf",
   "projectId": "abcdefgdufoJxB6b9b1fEqr1jUtFkyavUURbnDCFCnZxgs"
@@ -87,23 +87,22 @@ See the [Format and Transport](#endpoints/log-drains/format-and-transport) secti
 
 <Endpoint method="DELETE" url="/v1/integrations/log-drains/:id" />
 
-Deletes the log drain with the provided `id`.
+Deletes the Log Drain with the provided `id`.
 
 ### Format and Transport
 
-We support 3 types of log drains:
+We support 3 types of Log Drains:
 
-- JSON drains
-- NDJSON drains
-- Syslog drains
+- JSON
+- NDJSON
+- Syslog
 
 ### JSON drains
 
-When you choose the `json` type, the URL receives HTTPS or HTTP POST request with a JSON array on the `POST` body.
+When you choose the `json` type, the URL receives a HTTPS or HTTP POST request with a JSON array on the `POST` body.
 The logs are buffered and submitted as batches with the following formats:
 
 <Code lang="json">{`[
-  // build log
   {
     "id": <identifier>,
     "message": <text>,
@@ -115,7 +114,6 @@ The logs are buffered and submitted as batches with the following formats:
     "host": <hostname>,
     "entrypoint": <entrypoint>
   },
-  // lambda log
   {
     "id": <identifier>,
     "message": <text>,
@@ -137,19 +135,17 @@ The logs are buffered and submitted as batches with the following formats:
       "statusCode": <HTTP status code of proxy request>,
     }
   }
-  ...
 ]`}</Code>
 
 The requests are posted with a `x-zeit-signature` header which contains a hash signature you can use to validate the request body.
-See the [Securing your log drains](#endpoints/log-drains/securing-your-log-drains) section to learn how to verify requests.
+See the [Securing your Log Drains](#endpoints/log-drains/securing-your-log-drains) section to learn how to verify requests.
 
 ### NDJSON Drains
 
-When you choose the `ndjson` type, the URL receives HTTPS or HTTP POST request with JSON objects delimited by new line (`\\n`) on the `POST` body.
-See [ndjson.org](http://ndjson.org) for the spec of ngjson.
+When you choose the `ndjson` type, the URL receives a HTTPS or HTTP POST request with JSON objects delimited by new line (`\\n`) on the `POST` body.
+See [ndjson.org](http://ndjson.org) for more information on the structure.
 
-The log content format is the same with [JSON Drain](#endpoints/log-drains/json-drains) except it's new line delimited JSON objects instead of a JSON array.
-Also it receives the same HTTP headers including `x-zeit-signature`.
+Each request receives HTTP headers including `x-zeit-signature`.
 
 The following is an example `POST` body:
 
@@ -160,7 +156,7 @@ Duration: 16.76 ms\\tBilled Duration: 100 ms\\tMemory Size: 1024 MB\\tMax Memory
 ### Syslog Drain
 
 When you choose the `syslog` type, the URL is connected with TLS or TCP.
-Log drain messages are formatted according to [RFC5424](https://tools.ietf.org/html/rfc5424) framed using octet counting defined in [RFC6587](https://tools.ietf.org/html/rfc6587#section-3.4.1).
+Log Drain messages are formatted according to [RFC5424](https://tools.ietf.org/html/rfc5424) framed using octet counting defined in [RFC6587](https://tools.ietf.org/html/rfc6587#section-3.4.1).
 
 Syslog messages resemble the following:
 
@@ -171,18 +167,17 @@ END RequestId: ec00309f-4514-4128-8b8a-9a0e74900283
 REPORT RequestId: ec00309f-4514-4128-8b8a-9a0e74900283\\tDuration: 20.08 ms\\tBilled Duration: 100 ms Memory Size: 1024 MB\\tMax Memory Used: 77 MB\\tInit Duration: 157.97 ms
 ```
 
-Similar to JSON and NDJSON drains, a syslog message contains a hash signature for verifying message on the `signature` key of structured data.
-On syslog drains, the signature is computed using OAuth2 secret and the `MSG` part of syslog format.
+Similar to JSON and NDJSON drains, a syslog message contains a hash signature for verifying messages on the `signature` key of structured data.
+On syslog drains, the signature is computed using an OAuth2 secret and the `MSG` section of the syslog format.
 
-### Securing your log drains
+### Securing your Log Drains
 
 All drains support transport-level encryption using `HTTPS` or `TLS` protocols,
-and we strongly recommend to use them on production and use others only for development and testing.
+and we strongly recommend using them on production and use others only for development and testing.
 
-Also, when your server starts receiving payload, it's possibly any third parties to send log messages to your server if they know the URL.
-Therefore it's recommended to use HTTP Basic Authentication, or verify messages are sent from ZEIT using OAuth2 secret and hash signature.
+When your server starts receiving payloads, it could be a third party sending log messages to your server if they know the URL. Therefore, it is recommended to use HTTP Basic Authentication, or verify messages are sent from ZEIT using an OAuth2 secret and hash signature.
 
-For example, suppose you have a basic HTTP server subscribing to log drains, payload can be validated like this:
+For example, if you have a basic HTTP server subscribing to Log Drains, payload can be validated like the following:
 
 <Code lang="javascript">{`const http = require('http');
 const crypto = require('crypto');
@@ -208,5 +203,4 @@ function verifySignature(req, body) {
 }
 `}</Code>
 
-You can compute the signature using an HMAC hexdigest from the `secret` token of OAuth2 and request body,
-then compare it with the value of the `x-zeit-signature` header to validate the payload.
+You can compute the signature using an HMAC hexdigest from the `secret` token of the OAuth2 app and request body, then compare it with the value of the `x-zeit-signature` header to validate the payload.
