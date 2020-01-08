@@ -74,7 +74,15 @@ If you need more advanced behavior, such as a custom build step or private npm m
 
 ### Node.js Version
 
-The default Node.js version used is **10**, but can be changed to **12** by defining an `engines` property in a `package.json` file, like in the example below:
+When creating a new project, it automatically receives the latest LTS Node.js version available on ZEIT Now. In order to understand which Node.js version your project is using, log the output of `process.version`.
+
+<Note type="warning">
+  Just recently, our upstream providers have deprecated support for Node.js 8.
+  In turn, existing deployments using this version have to be upgraded to either
+  version 10 or 12, as described above.
+</Note>
+
+The available Node.js versions are either **10** or **12** and can be configured by defining an `engines` property in a `package.json` file, like in the example below:
 
 ```json
 {
@@ -91,8 +99,8 @@ The default Node.js version used is **10**, but can be changed to **12** by defi
 
 When defining an `engines` property, there are various different values that can be supplied. However, all of them have to satisfy one of two [SemVer ranges](https://devhints.io/semver):
 
-- **10.x** (The default if the property is not defined)
-- **12.x**
+- **10.x**
+- **12.x** (The default if the property is not defined)
 
 For example, you could set the field to **12.x** directly, but also **>=12.0.0** or **>=10.0.0**, because they satisfy the same contraints.
 
@@ -249,6 +257,27 @@ Go version 1.x is used for Go projects deployed with ZEIT Now.
 ### Go Dependencies
 
 The Go Runtime will automatically detect a `go.mod` file to install dependencies at the root of a project.
+
+### Go Build Configuration
+
+You can provide custom build flags by using the `GO_BUILD_FLAGS` [build environment variable](/docs/v2/build-step/#using-environment-variables-and-secrets).
+
+```json
+{
+  "build": {
+    "env": {
+      "GO_BUILD_FLAGS": "-ldflags '-s -w'"
+    }
+  }
+}
+```
+
+<Caption>
+  An example <InlineCode>-ldflags</InlineCode> flag with{' '}
+  <InlineCode>-s -w</InlineCode>. This will remove debug information from the
+  output file. This is the default value when no{' '}
+  <InlineCode>GO_BUILD_FLAGS</InlineCode> are provided.
+</Caption>
 
 ---
 
