@@ -1,3 +1,4 @@
+
 import { Code, InlineCode } from '~/components/text/code'
 import { HelpLink } from '~/components/text/link'
 import Note from '~/components/text/note'
@@ -270,11 +271,13 @@ Update some fields of a project either with its name or id.
 
 #### Request Parameters
 
-| Key                 | <HelpLink href="#api-basics/types" hasIcon>Type</HelpLink> | Required | Description                                                                                         |
-| ------------------- | ---------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| **buildCommand**    | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The build command for this project. When `null` is used this value will be automatically detected.  |
-| **devCommand**      | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The dev command for this project. When `null` is used this value will be automatically detected.    |
-| **outputDirectory** | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The output directory of the project. When `null` is used this value will be automatically detected. |
+| Key                 | <HelpLink href="#api-basics/types" hasIcon>Type</HelpLink> | Required | Description                                                                                            |
+| ------------------- | ---------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| **framework**       | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The framework that is being used for this project. When `null` is used no framework is used.           |
+| **publicSource**    | <HelpLink href="#api-basics/types">Boolean</HelpLink>      | No       | Specifies wether the source code and logs of the deployments for this project should be public or not. |
+| **buildCommand**    | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The build command for this project. When `null` is used this value will be automatically detected.     |
+| **devCommand**      | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The dev command for this project. When `null` is used this value will be automatically detected.       |
+| **outputDirectory** | <HelpLink href="#api-basics/types">String</HelpLink>       | No       | The output directory of the project. When `null` is used this value will be automatically detected.    |
 
 ##### Example Request
 
@@ -286,6 +289,8 @@ Update some fields of a project either with its name or id.
   }}
   auth
   body={{
+    framework: 'nextjs',
+    publicSource: false,
     buildCommand: 'yarn run different-build',
     devCommand: 'yarn run different-dev',
     outputDirectory: null
@@ -298,25 +303,11 @@ Update some fields of a project either with its name or id.
   "id": "QmQKrt94KYKF3sDysJq19N87uMmE8Wicbt2GirePy1dH8U",
   "name": "a-project-name",
   "accountId": "K4amb7K9dAt5R2vBJWF32bmY",
-  "framework": {
-    "slug": "next",
-    "version": "9.0.0"
-  },
-  "buildCommand": {
-    "auto": false,
-    "valueDetected": "yarn run build",
-    "valueCurrent": "yarn run different-build"
-  },
-  "devCommand": {
-    "auto": false,
-    "valueDetected": "next -p $PORT",
-    "valueCurrent": "yarn run different-dev"
-  },
-  "outputDirectory": {
-    "auto": true,
-    "valueDetected": ".next/static",
-    "valueCurrent": ".next/static"
-  },
+  "framework": 'nextjs',
+  "publicSource": false,
+  "buildCommand": "yarn run different-build",
+  "devCommand": "yarn run different-dev",
+  "outputDirectory": null,
   "updatedAt": 1555413045188,
   "createdAt": 1575972468641
 }`}</Code>
