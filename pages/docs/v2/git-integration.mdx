@@ -9,7 +9,7 @@ export const meta = {
   description:
     'How to use the ZEIT Now Git Integrations for automatic deployments from your repository.',
   editUrl: 'pages/docs/v2/git-integration.mdx',
-  lastEdited: '2020-01-09T01:08:34.000Z'
+  lastEdited: '2020-01-09T12:06:44.000Z'
 }
 
 ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), and [Bitbucket](#bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
@@ -28,7 +28,7 @@ The ZEIT Now Git integrations provide the following benefits:
 
 The easiest way to use a Git integration is to think of your **default branch as production**. Every time a pull/merge request is made to the default branch, Now will **create a unique deployment**, allowing you to **view the changes in a preview environment before merging**.
 
-## Integrations
+## Available Integrations
 
 - [GitHub](#github)
 - [GitLab](#gitlab)
@@ -36,10 +36,9 @@ The easiest way to use a Git integration is to think of your **default branch as
 
 ## Installation
 
-You can install any Git integration directly from your user or team dashboard.
-Get started connecting your GitHub, GitLab, or Bitbucket account by clicking the "Edit" link below the user or team name and following the steps within the modal that subsequently opens.
+You can install any Git integration directly from your dashboard by clicking ["New Project"](/new), then from the GitHub, GitLab, or Bitbucket tabs in the "From your existing code" section, then clicking the connect button.
 
-[ Image of Edit link ]
+[ Image of "From your existing code" section ]
 
 ---
 
@@ -53,13 +52,15 @@ The ZEIT Now for GitHub integration automatically deploys your GitHub projects w
   height={1217 / 2}
   shadow
 />
-<Caption></Caption>
+<Caption>ZEIT Now for GitHub deploying a pull request automatically.</Caption>
 
 ### Connecting with GitHub
 
-ZEIT Now for GitHub directly connects with your ZEIT account and can be linked from your user or team dashboard by clicking the "Edit" link next to the listed Git integrations, then by clicking "Install Now for GitHub" button.
+Link your GitHub and ZEIT accounts from your dashboard by clicking the "New Project" button and then by clicking the "Install Now for GitHub" button from the "GitHub" tab under the "From your existing code" section.
 
 [ image of "install now for github" section ]
+
+Once you have authorized the Now for GitHub integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from GitHub" button under the "GitHub" tab or by selecting a template and creating a GitHub repository from it.
 
 <Image
   src={`${process.env.IMAGE_ASSETS_URL}/docs/now-for-github/profile-selection.png`}
@@ -67,8 +68,6 @@ ZEIT Now for GitHub directly connects with your ZEIT account and can be linked f
   height={1268/2}
 />
 <Caption>The account or organization selection step on GitHub.</Caption>
-
-Once you have selected an account or organization, you will be asked which repositories to enable Now to deploy, then directed back to your ZEIT dashboard.
 
 For more information on deploying projects, read [the ZEIT Now introduction documentation](/docs).
 
@@ -89,18 +88,11 @@ The Now for GitLab integration automatically deploys your GitLab projects with [
 
 ### Connecting with GitLab
 
-Get started from your user or team dashboard by clicking the "Edit" link next to the listed Git integrations, then by clicking "Install Now for GitHub" button.
+Get started from your user or team dashboard by clicking the "New Project" button and then by clicking "Connect with GitLab" button from the "GitLab" tab under "From your existing code".
 
 [ image of "connect with gitlab" section ]
 
-Once you have authorized the Now integration, you will redirect back to your ZEIT dashboard.
-
-To deploy GitLab projects, you will need to explicitly link them from the GitLab section in your [account](/account) or team settings page, or through the [New Project workflow](/new). Without linking a project, no deployments will be made.
-
-<Note>
-  You can link projects across all the GitLab namespaces you have access to and
-  unlink a project at any time.
-</Note>
+Once you have authorized the Now for GitLab integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from GitLab" button under the "GitLab" tab or by selecting a template and creating a GitLab repo from it.
 
 For more information on deploying projects, read [the ZEIT Now introduction documentation](/docs).
 
