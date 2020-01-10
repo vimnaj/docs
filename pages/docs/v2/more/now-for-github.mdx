@@ -10,7 +10,7 @@ export const meta = {
   description:
     'Deploy each change in your GitHub repositories with ZEIT Now to share and test with your colleagues. Instant share-able links to your work with each push. Automatically make your changes available from production domains.',
   editUrl: 'pages/docs/v2/more/now-for-github.mdx',
-  lastEdited: '2020-01-08T12:29:27.000Z'
+  lastEdited: '2020-01-10T23:07:45.000Z'
 }
 
 The Now for GitHub integration features:
@@ -18,30 +18,6 @@ The Now for GitHub integration features:
 - Deploys every push in branches and pull requests to preview changes live
 - Updates production domains with the most recent changes from the master branch
 - Instant rollbacks for production domains when reverting changes
-
-## Default Behavior
-
-### A Deployment for Each Push
-
-Now for GitHub will **deploy every push by default**. This includes pushes and pull requests made to branches. This allows those working within the repository to preview changes made before the changes are pushed to production.
-
-With each new push, if Now is already building a previous commit, Now will cancel that current build to start the most recent commit so that you always have the latest changes deployed as quickly as possible.
-
-### Updating the Production Domain
-
-If production domains are set from the project domains dashboard, pushes and merges to the [default branch](https://help.github.com/articles/setting-the-default-branch/) (commonly "master") will be made live to those domains with the latest deployment made with a push.
-
-If you decide to revert a commit that has already updated a production domain, the previous commit's deployment will automatically be made available at the production domain instantly; providing you with instant rollbacks.
-
-### Preview URLs for the Latest Changes for Each Pull Request
-
-The latest push to any pull request will automatically be made available at a unique preview URL based on the project name, branch, and team or username. These URLs will be given through a comment on each pull request.
-
-### Deployment Authorizations for Forks
-
-If you receive a pull request from a fork of your repository and there is either a change to the [`now.json`](/docs/configuration) file or there are [secrets](/docs/v2/serverless-functions/env-and-secrets#adding-secrets) used in your project; Now will require an authorization from you or a member of your team to deploy the pull request.
-
-This behavior protects you and your project from a leak of sensitive information.
 
 ## Extending Your GitHub Workflow
 
@@ -57,58 +33,6 @@ Due to using GitHub's Deployments API, you will also be able to integrate with o
   height={1046/2}
 />
 <Caption style={{marginTop: '-40px'}}>The checks UI from GitHub containing ZEIT Now and Ghost Inspector.</Caption>
-
-## Configuration
-
-### Disabling Production Domain Updates
-
-To prevent Now from [automatically updating production domains](#updating-the-production-domain), use the following configuration option in a `now.json` file:
-
-```json
-{
-  "github": {
-    "autoAlias": false
-  }
-}
-```
-
-<Caption>
-  This example is of an entire <InlineCode>now.json</InlineCode> file with the
-  noted configuration option to disable automatically updating production
-  domains with Now for GitHub.
-</Caption>
-
-### Disable Commenting with Silent Mode
-
-To prevent Now from commenting on pull requests and commits, use the following configuration option in [a `now.json` file](/docs/configuration) for the repository you want to stop this behavior in.
-
-<Note>
-  Although Now will stop commenting, it will not stop deploying the latest
-  updates. For this configuration option, see{' '}
-  <Link href="#disabling-now-for-github-with-now.json">
-    disabling Now for GitHub
-  </Link>
-</Note>
-
-```json
-{
-  "github": {
-    "silent": true
-  }
-}
-```
-
-### Disable Auto Job Cancellation
-
-To prevent Now from canceling in-progress builds to prioritize building newer commits, use the following configuration option in [a `now.json` file](/docs/configuration) for the repository that this behavior should exist in.
-
-```json
-{
-  "github": {
-    "autoJobCancelation": false
-  }
-}
-```
 
 ## Included Environment Variables
 

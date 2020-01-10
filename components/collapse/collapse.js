@@ -52,12 +52,12 @@ const Collapse = ({
 
   // Update the size of the container on every re-render
   useEffect(() => {
-    if (contentRef && contentRef.current) {
-      // Wait for paint to read the DOM height
-      window.requestAnimationFrame(() => {
+    // Wait for paint to read the DOM height
+    window.requestAnimationFrame(() => {
+      if (contentRef && contentRef.current) {
         setContentHeight(contentRef.current.offsetHeight + 1)
-      })
-    }
+      }
+    })
   }, [contentRef])
 
   return (

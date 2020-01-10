@@ -1,0 +1,54 @@
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
+import Note from '~/components/text/note'
+import Link from '~/components/text/link'
+
+#### Disabling Production Domain Updates
+
+To prevent Now from [automatically updating production domains](#updating-the-production-domain), use the following configuration option in a `now.json` file:
+
+```json
+{
+  "github": {
+    "autoAlias": false
+  }
+}
+```
+
+<Caption>
+  This example is of an entire <InlineCode>now.json</InlineCode> file with the
+  noted configuration option to disable automatically updating production
+  domains with Now for GitHub.
+</Caption>
+
+#### Disable Commenting with Silent Mode
+
+To prevent Now from commenting on pull requests and commits, use the following configuration option in [a `now.json` file](/docs/configuration) for the repository you want to stop this behavior in.
+
+<Note>
+  Although Now will stop commenting, it will not stop deploying the latest
+  updates. For this configuration option, see{' '}
+  <Link href="#disabling-now-for-github-with-now.json">
+    disabling Now for GitHub
+  </Link>
+</Note>
+
+```json
+{
+  "github": {
+    "silent": true
+  }
+}
+```
+
+#### Disable Auto Job Cancellation
+
+To prevent Now from canceling in-progress builds to prioritize building newer commits, use the following configuration option in [a `now.json` file](/docs/configuration) for the repository that this behavior should exist in.
+
+```json
+{
+  "github": {
+    "autoJobCancelation": false
+  }
+}
+```

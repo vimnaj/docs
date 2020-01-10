@@ -3,13 +3,16 @@ import Card from '~/components/card'
 import { Image } from '~/components/media'
 import Caption from '~/components/text/caption'
 import Note from '~/components/text/note'
+import Collapse, { CollapseGroup } from '~/components/collapse'
+import GitHubDefaultBehaviour from '~/components/git-mdx/github-default-behaviour.mdx'
+import GitHubConfiguration from '~/components/git-mdx/github-configuration.mdx'
 
 export const meta = {
   title: 'Git Integration',
   description:
     'How to use the ZEIT Now Git Integrations for automatic deployments from your repository.',
   editUrl: 'pages/docs/v2/git-integration.mdx',
-  lastEdited: '2020-01-09T12:26:36.000Z'
+  lastEdited: '2020-01-10T23:07:45.000Z'
 }
 
 ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), and [Bitbucket](#bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
@@ -75,7 +78,15 @@ For more information on deploying projects, read [the ZEIT Now introduction docu
 
 For more information, such as a reference for default environment variables, expand the details view below.
 
-[ details ]
+<CollapseGroup>
+  <Collapse title="Default Behaviour">
+    <GitHubDefaultBehaviour />
+  </Collapse>
+
+<Collapse title="Configuration">
+    <GitHubConfiguration />
+  </Collapse>
+</CollapseGroup>
 
 ---
 
