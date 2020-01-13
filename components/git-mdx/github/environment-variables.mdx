@@ -1,0 +1,27 @@
+import Caption from '~/components/text/caption'
+import { InlineCode } from '~/components/text/code'
+import Note from '~/components/text/note'
+import Link from '~/components/text/link'
+
+You may want to use different workflows and use different APIs based on Git information.<br/>
+In order to support that, ZEIT Now will deploy your app with following built-in environment variables.
+
+| Variable Key                     | Description                                                                                                         |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `NOW_GITHUB_DEPLOYMENT`          | An indicator for whether the app was deployed by Now for GitHub.                                                    |
+| `NOW_GITHUB_ORG`                 | The GitHub organization who the app belongs to.                                                                     |
+| `NOW_GITHUB_REPO`                | The origin repository of the app.                                                                                   |
+| `NOW_GITHUB_COMMIT_ORG`          | The organization of which the commit belongs. For example, when submitting a pull request from a forked repository. |
+| `NOW_GITHUB_COMMIT_REPO`         | The repository of which the commit belongs. For example, when submitting a pull request from a forked repository.   |
+| `NOW_GITHUB_COMMIT_REF`          | The branch that the app was deployed using.                                                                         |
+| `NOW_GITHUB_COMMIT_SHA`          | The [sha](https://help.github.com/articles/github-glossary/#commit) of the commit the app was deployed using.       |
+| `NOW_GITHUB_COMMIT_AUTHOR_LOGIN` | The username belonging to the author of the commit that the project was deployed using.                             |
+| `NOW_GITHUB_COMMIT_AUTHOR_NAME`  | The name belonging to the author of the commit that the project was deployed using.                                 |
+
+<Note>
+  You can access these as{' '}
+  <Link href="/docs/v2/build-step#using-environment-variables-and-secrets">
+    build environment variables
+  </Link>{' '}
+  also.
+</Note>

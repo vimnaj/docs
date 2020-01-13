@@ -10,7 +10,7 @@ export const meta = {
   description:
     'Deploy each change in your GitHub repositories with ZEIT Now to share and test with your colleagues. Instant share-able links to your work with each push. Automatically make your changes available from production domains.',
   editUrl: 'pages/docs/v2/more/now-for-github.mdx',
-  lastEdited: '2020-01-10T23:07:45.000Z'
+  lastEdited: '2020-01-13T12:18:26.000Z'
 }
 
 The Now for GitHub integration features:
@@ -18,89 +18,6 @@ The Now for GitHub integration features:
 - Deploys every push in branches and pull requests to preview changes live
 - Updates production domains with the most recent changes from the master branch
 - Instant rollbacks for production domains when reverting changes
-
-## Extending Your GitHub Workflow
-
-Now for GitHub uses the deployment API to bring you an extended user interface both in GitHub, when showing deployments, and Slack, if you have notifications setup using the [Slack GitHub app](https://slack.github.com).
-
-You will see all of your deployments, production or preview, from within GitHub in its own page. See the page for this very documentation: <https://github.com/zeit/docs/deployments>
-
-Due to using GitHub's Deployments API, you will also be able to integrate with other services through [GitHub's checks](https://help.github.com/en/articles/about-status-checks). Now for GitHub will provide the deployment URL to the checks that require it, for example; to a testing suite such as [Ghost Inspector](https://ghostinspector.com/docs/integration/github/).
-
-<Image
-  src={`${process.env.ASSETS}/docs/now-for-github/github-checks.png`}
-  width={1738/2}
-  height={1046/2}
-/>
-<Caption style={{marginTop: '-40px'}}>The checks UI from GitHub containing ZEIT Now and Ghost Inspector.</Caption>
-
-## Included Environment Variables
-
-You may want to use different workflows and use different APIs based on Git information.<br/>
-In order to support that, ZEIT Now will deploy your app with following built-in environment variables.
-
-| Variable Key                     | Description                                                                                                         |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `NOW_GITHUB_DEPLOYMENT`          | An indicator for whether the app was deployed by Now for GitHub.                                                    |
-| `NOW_GITHUB_ORG`                 | The GitHub organization who the app belongs to.                                                                     |
-| `NOW_GITHUB_REPO`                | The origin repository of the app.                                                                                   |
-| `NOW_GITHUB_COMMIT_ORG`          | The organization of which the commit belongs. For example, when submitting a pull request from a forked repository. |
-| `NOW_GITHUB_COMMIT_REPO`         | The repository of which the commit belongs. For example, when submitting a pull request from a forked repository.   |
-| `NOW_GITHUB_COMMIT_REF`          | The branch that the app was deployed using.                                                                         |
-| `NOW_GITHUB_COMMIT_SHA`          | The [sha](https://help.github.com/articles/github-glossary/#commit) of the commit the app was deployed using.       |
-| `NOW_GITHUB_COMMIT_AUTHOR_LOGIN` | The username belonging to the author of the commit that the project was deployed using.                             |
-| `NOW_GITHUB_COMMIT_AUTHOR_NAME`  | The name belonging to the author of the commit that the project was deployed using.                                 |
-
-<Note>
-  You can access these as{' '}
-  <Link href="/docs/v2/build-step#using-environment-variables-and-secrets">
-    build environment variables
-  </Link>{' '}
-  also.
-</Note>
-
-## Required GitHub Permissions
-
-We require some permissions through our Now for GitHub integration. Below are listed the permissions required and a description for what they are used for.
-
-### Repository Permissions
-
-Repository permissions allow us to interact with repositories belonging to or associated with (if permitted) the connected account.
-
-| Permission        | Read | Write | Description                                                                                                               |
-| ----------------- | ---- | ----- | ------------------------------------------------------------------------------------------------------------------------- |
-| `Administration`  | Y    | Y     | Allows us to create repositories on the user's behalf.                                                                    |
-| `Checks`          | Y    | Y     | Allows us to add checks against source code on push.                                                                      |
-| `Contents`        | Y    | Y     | Allows us to fetch and write source code for new project templates for the connected user or organization.                |
-| `Deployments`     | Y    | Y     | Allows us to synchronize deployment status between GitHub and the ZEIT infrastructure.                                    |
-| `Pull Requests`   | Y    | Y     | Allows us create deployments for each Pull Request (PR) and comment on those PR's with status updates.                    |
-| `Issues`          | Y    | Y     | Allows us to interact with Pull Requests as with the `Pull Requests` permissions due to GitHub requiring both for access. |
-| `Metadata`        | Y    | N     | Allows us to read basic repository metadata to provide a detailed dashboard.                                              |
-| `Web Hooks`       | Y    | Y     | Allows us to react to various GitHub events.                                                                              |
-| `Commit Statuses` | Y    | Y     | Allows us to synchronize commit status between GitHub and ZEIT.                                                           |
-
-### Organization Permissions
-
-Organization permissions allow us to offer an enhanced experience through information about the connected organization.
-
-| Permission | Read | Write | Description                                             |
-| ---------- | ---- | ----- | ------------------------------------------------------- |
-| `Members`  | Y    | N     | Allows us to offer a better team onboarding experience. |
-
-### User Permissions
-
-User permissions allow us to offer an enhanced experience through information about the connected user.
-
-| Permission        | Read | Write | Description                                            |
-| ----------------- | ---- | ----- | ------------------------------------------------------ |
-| `Email addresses` | Y    | N     | Allows us to associate an email with a GitHub account. |
-
-<Note>
-  We use the permissions above in order to provide you with the best possible
-  deployment experience. If you have any questions or concerns about any of the
-  permission scopes, please reach out to
-  <Link href="mailto:support@zeit.co">support@zeit.co</Link>.
-</Note>
 
 export default ({ children }) => <Doc meta={meta}>{children}</Doc>
 

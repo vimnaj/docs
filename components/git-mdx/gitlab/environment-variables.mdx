@@ -1,0 +1,24 @@
+import Note from '~/components/text/note'
+import Link from '~/components/text/link'
+
+You may want to use different workflows and APIs based on the environment of the deployment based on Git information. To support that, ZEIT Now will deploy your app with the following built-in [environment variables](/docs/v2/serverless-functions/env-and-secrets) when deploying with Now for GitLab:
+
+| Variable Key                 | Description                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------------------- |
+| `GITLAB_DEPLOYMENT`          | An indicator for whether the app was deployed by Now for GitLab.                        |
+| `GITLAB_PROJECT_NAMESPACE`   | The GitLab user, group, or sub-group that the project belongs to.                       |
+| `GITLAB_PROJECT_NAME`        | The name of the deployed project.                                                       |
+| `GITLAB_PROJECT_ID`          | The ID of the deployed project.                                                         |
+| `GITLAB_PROJECT_PATH`        | The GitLab project path.                                                                |
+| `GITLAB_COMMIT_REF`          | The branch that the app was deployed using.                                             |
+| `GITLAB_COMMIT_SHA`          | The sha of the commit the app was deployed using.                                       |
+| `GITLAB_COMMIT_MESSAGE`      | The message accompanying the commit that the app was deployed using.                    |
+| `GITLAB_COMMIT_AUTHOR_LOGIN` | The username belonging to the author of the commit that the project was deployed using. |
+| `GITLAB_COMMIT_AUTHOR_NAME`  | The name belonging to the author of the commit that the project was deployed using.     |
+
+<Note>
+  You can access these as 
+  <Link href="https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets">
+    build environment variables
+  </Link> also.
+</Note>
