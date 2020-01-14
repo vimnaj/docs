@@ -18,7 +18,7 @@ export const meta = {
   description:
     "How to use the ZEIT Now Git Integrations for GitHub, GitLab, or Bitbucket to automatic deploy from your project's repository for each push and ship to production on merge to the main branch.",
   editUrl: 'pages/docs/v2/git-integration.mdx',
-  lastEdited: '2020-01-14T14:39:19.000Z'
+  lastEdited: '2020-01-14T20:17:33.000Z'
 }
 
 ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), and [Bitbucket](#bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
@@ -32,15 +32,17 @@ ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), an
 
 The ZEIT Now Git integrations provide the following benefits:
 
-- [Preview Deployments](/docs/v2/platform/deployments#preview) for **every push**.
-- **[Production Deployments](/docs/v2/platform/deployments#production) for the most recent changes** from the default branch.
-- **Instant rollbacks when reverting changes** assigned to a custom domain.
+- [Preview Deployments](/docs/v2/platform/deployments#preview) for every push.
+- [Production Deployments](/docs/v2/platform/deployments#production) for the most recent changes from the default branch.
+- Instant rollbacks when reverting changes assigned to a custom domain.
 
 The easiest way to use a Git integration is to think of your **default branch as production**. Every time a pull/merge request is made to the default branch, Now will **create a unique deployment**, allowing you to **view the changes in a preview environment before merging**.
 
 When merging to the default branch, a **Production Deployment** is made, making the latest changes available to assigned custom domains automatically.
 
 ## Available Integrations
+
+Click any Git integration from the list below to skip to its section:
 
 - [GitHub](#zeit-now-for-github)
 - [GitLab](#zeit-now-for-gitlab)
@@ -58,8 +60,6 @@ You can install any Git integration directly from your dashboard by clicking ["N
   borderRadius
 />
 <Caption>The "From your existing code" section with a prompt to install ZEIT Now for GitHub.</Caption>
-
----
 
 ## ZEIT Now for GitHub
 
@@ -113,8 +113,6 @@ For more information, such as a reference for default environment variables, exp
   </Collapse>
 </CollapseGroup>
 
----
-
 ## ZEIT Now for GitLab
 
 The ZEIT Now for GitLab integration automatically deploys your GitHub projects with [ZEIT Now](/now), providing [Preview Deployment URLs](/docs/v2/platform/deployments#preview), and automatic [Custom Domain](/docs/v2/custom-domains) updates.
@@ -157,8 +155,6 @@ For more information, such as a reference for default environment variables, exp
   </Collapse>
 </CollapseGroup>
 
----
-
 ## ZEIT Now for Bitbucket
 
 The ZEIT Now for Bitbucket integration automatically deploys your GitHub projects with [ZEIT Now](/now), providing [Preview Deployment URLs](/docs/v2/platform/deployments#preview), and automatic [Custom Domain](/docs/v2/custom-domains) updates.
@@ -200,8 +196,6 @@ For more information, such as a reference for default environment variables, exp
     <BitbucketEnvironmentVariables />
   </Collapse>
 </CollapseGroup>
-
----
 
 ## Related
 
