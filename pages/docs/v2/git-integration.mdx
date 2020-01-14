@@ -18,7 +18,7 @@ export const meta = {
   description:
     "How to use the ZEIT Now Git Integrations for GitHub, GitLab, or Bitbucket to automatic deploy from your project's repository for each push and ship to production on merge to the main branch.",
   editUrl: 'pages/docs/v2/git-integration.mdx',
-  lastEdited: '2020-01-13T16:53:48.000Z'
+  lastEdited: '2020-01-14T10:31:04.000Z'
 }
 
 ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), and [Bitbucket](#bitbucket) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
@@ -32,8 +32,8 @@ ZEIT Now provides integrations for your [GitHub](#github), [GitLab](#gitlab), an
 
 The ZEIT Now Git integrations provide the following benefits:
 
-- [Preview Deployments](/docs/v2/platform/glossary#preview-deployments) for **every push**.
-- **[Production Deployments](/docs/v2/platform/glossary#production-deployments) for the most recent changes** from the default branch.
+- [Preview Deployments](/docs/v2/platform/deployments#preview) for **every push**.
+- **[Production Deployments](/docs/v2/platform/deployments#production) for the most recent changes** from the default branch.
 - **Instant rollbacks when reverting changes** assigned to a custom domain.
 
 The easiest way to use a Git integration is to think of your **default branch as production**. Every time a pull/merge request is made to the default branch, Now will **create a unique deployment**, allowing you to **view the changes in a preview environment before merging**.
@@ -42,9 +42,9 @@ When merging to the default branch, a **Production Deployment** is made, making 
 
 ## Available Integrations
 
-- [GitHub](#github)
-- [GitLab](#gitlab)
-- [Bitbucket](#bitbucket)
+- [GitHub](#zeit-now-for-github)
+- [GitLab](#zeit-now-for-gitlab)
+- [Bitbucket](#zeit-now-for-bitbucket)
 
 ## Installation
 
@@ -109,7 +109,7 @@ For more information, such as a reference for default environment variables, exp
 
 ## ZEIT Now for GitLab
 
-The Now for GitLab integration automatically deploys your GitLab projects with [ZEIT Now](/now), providing preview URLs and automatic production domain updates.
+The ZEIT Now for GitLab integration automatically deploys your GitHub projects with [ZEIT Now](/now), providing [Preview Deployment URLs](/docs/v2/platform/deployments#preview), and automatic [Custom Domain](/docs/v2/custom-domains) updates.
 
 <Image
   src={`${process.env.ASSETS}/guides/getting-started-with-now-for-gitlab/deploy-comment.png`}
@@ -120,17 +120,17 @@ The Now for GitLab integration automatically deploys your GitLab projects with [
 
 ### Connecting with GitLab
 
-Get started from your user or team dashboard by clicking the "New Project" button and then by clicking "Connect with GitLab" button from the "GitLab" tab under "From your existing code".
+Get started from your dashboard by clicking the ["New Project"](/new) button followed by "Connect with GitLab" from the "GitLab" tab under "From your existing code".
 
 [ image of "connect with gitlab" section ]
 
-Once you have authorized the Now for GitLab integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from GitLab" button under the "GitLab" tab or by selecting a template and creating a GitLab repo from it.
+Once you have authorized the GitLab integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from GitLab" button under the "GitLab" tab or by selecting a template and creating a GitLab repository from it.
 
 For more information on deploying projects, read [the ZEIT Now introduction documentation](/docs).
 
 ### More Information About Now for GitLab
 
-For more information, such as a reference for default environment variables, expand the details view below.
+For more information, such as a reference for default environment variables, expand the relevant details view below.
 
 <CollapseGroup>
   <Collapse title="Default Behaviour">
@@ -146,7 +146,7 @@ For more information, such as a reference for default environment variables, exp
 
 ## ZEIT Now for Bitbucket
 
-The ZEIT Now for Bitbucket integration automatically deploys your Bitbucket projects with [ZEIT Now](/now), providing preview URLs and automatic production domain updates.
+The ZEIT Now for Bitbucket integration automatically deploys your GitHub projects with [ZEIT Now](/now), providing [Preview Deployment URLs](/docs/v2/platform/deployments#preview), and automatic [Custom Domain](/docs/v2/custom-domains) updates.
 
 <Image
   src={`${process.env.ASSETS}/docs/now-for-bitbucket/project-commit.png`}
@@ -157,17 +157,17 @@ The ZEIT Now for Bitbucket integration automatically deploys your Bitbucket proj
 
 ### Connecting with Bitbucket
 
-Get started from your user or team dashboard by clicking the "New Project" button and then by clicking "Connect with Bitbucket" button from the "Bitbucket" tab under "From your existing code".
+Get started from your dashboard by clicking the ["New Project"](/new) button followed by "Connect with Bitbucket" from the "Bitbucket" tab under "From your existing code".
 
 [ image of "connect with bitbucket" section ]
 
-Once you have authorized the Now for Bitbucket integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from Bitbucket" button under the "Bitbucket" tab or by selecting a template and creating a Bitbucket repo from it.
+Once you have authorized the Bitbucket integration, you will redirect back to the "New Project" page where you can create a new project from an existing repository by clicking the "New Project from Bitbucket" button under the "Bitbucket" tab or by selecting a template and creating a Bitbucket repo from it.
 
 For more information on deploying projects, read [the ZEIT Now introduction documentation](/docs).
 
 ### More Information About Now for Bitbucket
 
-For more information, such as a reference for default environment variables, expand the details view below.
+For more information, such as a reference for default environment variables, expand the relevant details view below.
 
 <CollapseGroup>
   <Collapse title="Default Behaviour">
@@ -180,12 +180,6 @@ For more information, such as a reference for default environment variables, exp
 </CollapseGroup>
 
 ---
-
-## Adding Existing Projects
-
-Once installed, the integration will be available to all of your repositories and projects immediately, requiring no configuration.
-
-To select a repository or project to use with the integration, select the **New Project** dropdown from the dashboard and choose either **Import From GitHub** / **Import From GitLab** / **Import From Bitbucket** to import the project.
 
 ## Related
 
