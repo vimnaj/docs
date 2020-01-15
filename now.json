@@ -13,16 +13,6 @@
       "headers": { "Location": "/docs/api" }
     },
     {
-      "src": "/docs/router-status/(?<code>[^/]*)",
-      "status": 301,
-      "headers": { "Location": "/docs/v2/network/status-codes#$code" }
-    },
-    {
-      "src": "/docs/router-status",
-      "status": 301,
-      "headers": { "Location": "/docs/v2/network/status-codes" }
-    },
-    {
       "src": "/docs/builders",
       "status": 301,
       "headers": { "Location": "/docs/runtimes" }
@@ -45,6 +35,11 @@
       "src": "/docs/v2/routing/(.*)/?",
       "status": 301,
       "headers": { "Location": "/docs/v2/network/$1" }
+    },
+     {
+      "src": "/docs/v2/environment-variables-and-secrets/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/build-step/#using-environment-variables-and-secrets" }
     },
     {
       "src": "/docs/features/(.*)",
@@ -118,6 +113,13 @@
       }
     },
     {
+      "src": "/docs/v2/environment-variables-and-secrets/",
+      "status": 301,
+      "headers": {
+        "Location": "/docs/v2/serverless-functions/env-and-secrets/"
+      }
+    },
+    {
       "src": "/docs/v2/(deployments|advanced)/configuration(.*)",
       "status": 301,
       "headers": { "Location": "/docs/configuration$2" }
@@ -178,12 +180,16 @@
     {
       "src": "/examples(.*)",
       "status": 301,
-      "headers": { "Location": "https://github.com/zeit/now-examples" }
+      "headers": {
+        "Location": "https://github.com/zeit/now/tree/master/examples"
+      }
     },
     {
       "src": "/docs/v1/examples/.*",
       "status": 301,
-      "headers": { "Location": "https://github.com/zeit/now-examples" }
+      "headers": {
+        "Location": "https://github.com/zeit/now/tree/master/examples"
+      }
     },
     {
       "src": "/docs/other/(.*)",
