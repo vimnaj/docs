@@ -1,7 +1,9 @@
 import Doc from '~/components/layout/docs'
 import Card from '~/components/card'
 import Snippet from '~/components/snippet'
+import Link from '~/components/text/link'
 import Caption from '~/components/text/caption'
+import Note from '~/components/text/note'
 import Quickstarts, { Quickstart } from '~/components/quickstarts'
 
 import { quickstarts } from '~/lib/data/v2/quickstarts'
@@ -11,22 +13,29 @@ export const meta = {
   description:
     'An introduction to the ZEIT Now platform and how to get started deploying any kind of application.',
   editUrl: 'pages/docs/v2/introduction.mdx',
-  lastEdited: '2020-01-15T13:19:57.000Z'
+  lastEdited: '2020-01-15T14:02:09.000Z'
 }
 
 ZEIT Now is a cloud platform for **static sites** and **Serverless Functions**. It enables developers to host websites and web services that **deploy instantly**, **scale automatically**, and requires **no supervision**, all with **no configuration**.
 
 Getting started with Now takes only a few steps and lets you get up and running with your new project in less than a minute.
 
-## Deploy and Existing Project
+## Deploy an Existing Project
 
-Once you have signed up to ZEIT, you can use our Git integrations with GitHub, GitLab, or Bitbucket to deploy an existing project by selecting a repository from your Git account.
+Once you have [signed up to ZEIT](/signup), you can use our [Git integrations](/docs/v2/git-integration) with [GitHub](/docs/v2/more/now-for-github), [GitLab](/docs/v2/more/now-for-gitlab), or [Bitbucket](/docs/v2/more/now-for-bitbucket) to deploy an existing project – then with a deployment for every push – by selecting a repository from your Git account.
 
-Get started connecting a Git integration from the ["New Project"](/new) page under the "From an existing project" section and selecting the tab of the Git service you'd like to connect to.
+Connect through the ["New Project"](/new) page under the "From an existing project" section, and then from the same place, set up a project using your Git integration.
 
-With a Git account connected, head back to the ["New Project"](/new) page, and under the same tab as you connected, create a new project from you project repository.
+<Note>
+  For more information on setting up Git to deploy with ZEIT and what you can do
+  with it, see{' '}
+  <Link href="/docs/v2/git-integration">
+    the Git integrations documentation
+  </Link>
+  .
+</Note>
 
-Alternatively, if you want to start fresh with a new project, use a Quickstart template from below.
+Alternatively, if you want to start fresh with a new project, use a Quickstart template from below. Additionally, you can use this method to start a new Git repository with any connected Git integration.
 
 ## Quickstarts
 
