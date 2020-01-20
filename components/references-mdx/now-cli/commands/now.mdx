@@ -44,6 +44,16 @@ The `--build-env` option, shorthand `-b`, can be used to provide environment var
 <Snippet dark text="now --build-env [key1=value1 key2=value2 key3=value3]" />
 <Caption>Using the <InlineCode>now</InlineCode> command with the <InlineCode>--build-env</InlineCode> option.</Caption>
 
+#### Confirm
+
+The `--confirm` option can be used to skip questions you are asked when setting up a new project.
+The questions will be answered with reasonable defaults inferred from `now.json` and the folder name.
+
+##### Usage Example
+
+<Snippet dark text="now --confirm" />
+<Caption>Using the <InlineCode>now</InlineCode> command with the <InlineCode>--confirm</InlineCode> option.</Caption>
+
 #### Env
 
 The `--env` option, shorthand `-e`, can be used to provide environment variables at [run time](/docs/v2/serverless-functions/env-and-secrets).
